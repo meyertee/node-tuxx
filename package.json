@@ -1,0 +1,29 @@
+{
+  "name": "node-tuxx",
+  "version": "0.1.0",
+  "description": "Node.js port of Gordon Henderson's (Drogon) Tux Crossing tutorial for the Raspberry Pi",
+  "main": "node-tuxx.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meyertee/node-tuxx.git"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "os": [
+    "linux"
+  ],
+  "keywords": [
+    "gpio",
+    "raspberry",
+    "raspi",
+    "rpi",
+    "pi",
+    "node",
+    "node.js",
+    "linux"
+  ],
+  "author": "meyertee",
+  "license": "MIT"
+}
+
