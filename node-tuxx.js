@@ -14,9 +14,11 @@ var switchOff = function(led){
     var arr = [];
     for (var pinName in pins){
         var pin = pins[pinName];
-        arr.push("- " + pinName + "on gpio pin " + pin.gpio + " (" + direction + ")");
+        arr.push("- '" + pinName + "' on GPIO #" + pin.gpio + " (" + pin.direction() + ")");
     }
-    console.log("Uses the following pins", arr.join("\n")); 
+    console.log("Uses the following pins:"); 
+    console.log(arr.join("\n")); 
+    console.log("\n"); 
 }());
 
 console.log('Turning off all LEDs');
@@ -26,9 +28,12 @@ console.log('Turning on traffic green & pedestrian red');
 switchOn(pins.green);
 switchOn(pins.redMan);
 
-process.on("exit", function(){
-    console.log('Turning off all LEDs');
+// Start reading from stdin so we don't exit.
+process.stdin.resume();
+process.on('SIGINT', function () {
+    console.log('\nTurning off all LEDs');
     leds.forEach(switchOff);
+    process.exit(0);
 });
 
 (function mainLoop(){
@@ -46,7 +51,7 @@ process.on("exit", function(){
 }());
 
 function waitButton(callback){
-    console.log('Please press the button on GPIO #2 to get a green walking signal');
+    console.log('Please press the button on GPIO #2 to walk or press CTRL-C to exit.');
     pins.button.watch(function (err, value) {
         if (err) throw err;
         console.log('Button pressed!, its value was ' + value);
@@ -81,11 +86,9 @@ function walk(callback){
         switchOff(pins.red);
         switchOn(pins.yellow);
     
-        setTimeout(function(){
-            console.log('Stop walking');
-            callback();
-        }, 2000);
-    }, 10000);
+        console.log('Stop walking');
+        callback();
+    }, 5000);
 }
 
 function graceTime(callback){
@@ -120,6 +123,6 @@ function startTraffic(callback){
         
         console.log('Started');
         callback();
-    }, 500);
+    }, 1000);
 }
 
