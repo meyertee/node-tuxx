@@ -31,7 +31,7 @@ process.on("exit", function(){
     leds.forEach(switchOff);
 });
 
-function mainLoop(){
+(function mainLoop(){
     waitButton(function(){
         stopTraffic(function(){
             walk(function(){
@@ -43,7 +43,7 @@ function mainLoop(){
             });
         });
     });
-}();
+}());
 
 function waitButton(callback){
     console.log('Please press the button on GPIO #2 to get a green walking signal');
