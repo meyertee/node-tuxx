@@ -123,6 +123,6 @@ function startTraffic(callback){
         
         console.log('Started');
         callback();
-    }, 1000);
+    }, 500);
 }
 
