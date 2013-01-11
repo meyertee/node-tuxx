@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Node.js port of Gordon Henderson's (Drogon) Tux Crossing tutorial for the Raspberry Pi",
   "main": "node-tuxx.js",
+  "dependencies": {
+    "onoff": ">= 0.1.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/meyertee/node-tuxx.git"
@@ -24,6 +27,9 @@
     "linux"
   ],
   "author": "meyertee",
-  "license": "MIT"
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
-
